@@ -1,8 +1,10 @@
 
 class Machine:
-    def __init__(self, name, ports=None):
+    def __init__(self, name, ports=None, on=False, os="linux"):
         self.name = name
         self.ports = ports if ports else []
+        self.on = on
+        self.os = os
 
     def add_port(self, name: str):
         self.ports.append(Port(self, name))
@@ -15,14 +17,14 @@ class Machine:
 class Network:
     def __init__(self, name):
         self.name = name
-        self.partners = []
+        self.ports = []
 
     def _connect(self, obj):
-        self.partners.append(obj)
+        self.ports.append(obj)
 
-    def connect(self, partner):
-        self._connect(partner)
-        partner._connect(self)
+    def connect(self, port):
+        self._connect(port)
+        port._connect(self)
 
 
 class Port:
