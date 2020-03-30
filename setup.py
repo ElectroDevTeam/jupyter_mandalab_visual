@@ -6,5 +6,6 @@ setuptools.setup(
     author="amit klein",
     author_email="amitkle001@gmail.com",
     packages=setuptools.find_packages(),
-    install_requires=[]
+    install_requires=[],
+    include_package_data=True
 )
